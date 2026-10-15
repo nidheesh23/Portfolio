@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Nidheesh Kumar Portfolio</title>
+  <meta name="description" content="Nidheesh Kumar, Full Stack Developer. I build modern and responsive web applications.">
+
+  <!-- Fonts: Inter (interface), Fira Code (code card), Caveat (handwritten note) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="assets/boxicons/boxicons.min.css">
+</head>
+<body class="is-preloading">
+
+<!--
+  IMAGE / FILE PATHS USED BY THIS PAGE (change them here or replace the files):
+    assets/profile.png   hero photo, transparent PNG (person + laptop)      <- your photo
+    assets/cv.pdf        file behind the "Download CV" button               <- add your CV
+  Everything else (logo, icons, ring, desk, books, mug, plant, fabric) is drawn in HTML, CSS and SVG.
+-->
+
+<div class="viewport" id="viewport">
+  <div class="stage" id="stage">
+
+    <!-- ============ BACKGROUND ============ -->
+    <div class="bg" aria-hidden="true">
+      <div class="bg-base"></div>
+      <svg class="bg-fabric" viewBox="0 0 1672 941" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="fabA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8d8d94"/><stop offset=".45" stop-color="#4c4c52"/><stop offset="1" stop-color="#26262a"/>
+          </linearGradient>
+          <linearGradient id="fabB" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#2a2a2e"/><stop offset=".55" stop-color="#55555b"/><stop offset="1" stop-color="#2b2b30"/>
+          </linearGradient>
+          <linearGradient id="fabC" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#1b1b1f"/><stop offset=".5" stop-color="#3a3a40"/><stop offset="1" stop-color="#1d1d21"/>
+          </linearGradient>
+          <linearGradient id="fabD" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#58585f" stop-opacity=".0"/><stop offset=".5" stop-color="#58585f" stop-opacity=".55"/><stop offset="1" stop-color="#58585f" stop-opacity="0"/>
+          </linearGradient>
+          <filter id="soft" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="3"/></filter>
+          <filter id="soft2" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="14"/></filter>
+        </defs>
+        <!-- upper-left dark drapes -->
+        <path d="M0 250 C 60 300 150 380 220 470 C 290 560 350 640 470 700 L 0 760 Z" fill="url(#fabC)" opacity=".85" filter="url(#soft)"/>
+        <path d="M0 330 C 80 360 200 430 300 560 C 380 660 470 720 600 760 L 0 800 Z" fill="url(#fabB)" opacity=".5" filter="url(#soft)"/>
+        <!-- top-right folds -->
+        <path d="M980 0 C 1100 60 1230 120 1360 230 C 1460 320 1560 330 1672 300 L 1672 0 Z" fill="url(#fabC)" opacity=".55" filter="url(#soft2)"/>
+        <path d="M1180 0 C 1260 110 1330 190 1420 260 C 1500 320 1600 340 1672 330" fill="none" stroke="#6c6c73" stroke-opacity=".35" stroke-width="3" filter="url(#soft)"/>
+        <path d="M640 0 C 700 40 760 100 820 190" fill="none" stroke="#5c5c63" stroke-opacity=".3" stroke-width="3" filter="url(#soft)"/>
+        <!-- bottom-left satin folds -->
+        <path d="M0 690 C 90 720 200 790 330 820 C 400 838 450 850 520 941 L 0 941 Z" fill="url(#fabA)" filter="url(#soft)"/>
+        <path d="M0 760 C 110 800 190 860 260 941 L 0 941 Z" fill="#1d1d21" opacity=".8" filter="url(#soft)"/>
+        <path d="M0 700 C 90 730 190 790 320 818" fill="none" stroke="#a9a9b0" stroke-opacity=".5" stroke-width="3" filter="url(#soft)"/>
+        <path d="M0 805 C 70 830 130 880 170 941" fill="none" stroke="#7d7d84" stroke-opacity=".45" stroke-width="3" filter="url(#soft)"/>
+        <!-- bottom-right dark swell -->
+        <path d="M900 941 C 1100 870 1350 860 1672 880 L 1672 941 Z" fill="#202024" opacity=".9" filter="url(#soft)"/>
+        <path d="M1050 941 C 1200 900 1450 880 1672 905" fill="none" stroke="#5d5d64" stroke-opacity=".4" stroke-width="3" filter="url(#soft)"/>
+        <path d="M300 880 C 600 900 800 925 1000 941" fill="none" stroke="#4a4a50" stroke-opacity=".5" stroke-width="3" filter="url(#soft)"/>
+      </svg>
+      <!-- faint plant shadow behind the ring -->
+      <svg class="bg-plant" viewBox="0 0 200 260" aria-hidden="true">
+        <g fill="#2f3033" opacity=".85">
+          <path d="M100 260 C 96 190 90 130 70 70 C 100 100 112 160 106 260 Z"/>
+          <path d="M104 230 C 140 190 170 120 160 40 C 120 80 108 160 104 230 Z"/>
+          <path d="M98 240 C 60 210 20 160 14 90 C 60 120 90 180 98 240 Z"/>
+          <path d="M106 200 C 150 170 190 150 198 110 C 150 110 118 150 106 200 Z"/>
+        </g>
+      </svg>
+      <div class="bg-shade-left"></div>
+      <div class="bg-vignette"></div>
+    </div>
+
+    <!-- ============ NAVIGATION ============ -->
+    <header class="nav">
+      <a class="brand" href="#home" aria-label="Nidheesh Kumar, home">
+        <svg class="brand-mark" viewBox="0 0 66 46" aria-hidden="true">
+          <defs>
+            <linearGradient id="nk" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f4f4f5"/><stop offset="1" stop-color="#b9b9bd"/>
+            </linearGradient>
+          </defs>
+          <path fill="url(#nk)" d="M2 44 V4 H11 L26 28 V4 H31 V44 H22 L7 20 V44 Z"/>
+          <path fill="url(#nk)" d="M36 4 H44 V20 L58 4 H66 L51 21 L66 44 H57 L45 26 L44 27 V44 H36 Z"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">Nidheesh Kumar</span>
+          <!-- <span class="brand-role">Full Stack Developer</span> -->
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#home" class="is-active" data-link="home">Home</a>
+        <a href="#about" data-link="about">About</a>
+        <a href="#skills" data-link="skills">Skills</a>
+        <a href="#projects" data-link="projects">Projects</a>
+        <a href="#experience" data-link="experience">Experience</a>
+        <a href="#contact" data-link="contact">Contact</a>
+      </nav>
+
+      <a class="talk" href="#contact">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7.5 12 13l8-5.5"/></svg>
+        <span>Let's Talk</span>
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+      </a>
+    </header>
+
+    <!-- ============ HERO TEXT ============ -->
+    <section class="intro" id="home">
+      <p class="eyebrow"><span>Home</span><i></i></p>
+      <h1>
+        <span class="h1-line">Hi, I’m</span>
+        <span class="h1-line">Nidheesh <em>Kumar</em></span>
+      </h1>
+      <p class="lead">
+        I build modern and responsive
+        <span class="lead-accent"><span id="typed">web applications.</span><span class="caret" aria-hidden="true"></span></span>
+      </p>
+      <p class="copy">
+        <span>A passionate Full Stack Developer who enjoys creating</span>
+        <span>beautiful, user-friendly and functional web experiences</span>
+        <span>using modern technologies.</span>
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="#projects">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10.5l7 2.5 2.5 7z"/><path d="m10 13 4-4"/></svg>
+          <span>View My Work</span>
+          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="/assets/Nidheesh_Kumar_Selvaraj_Resume.pdf" download>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15 7.5 10.5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+          <span>Download CV</span>
+        </a>
+      </div>
+
+      <ul class="socials" aria-label="Social links">
+        <li><a href="https://www.linkedin.com/in/s-nidheesh-kumar" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="8" fill="#0a66c2"/><path fill="#fff" d="M8.6 15.4h4.6V31H8.6zM10.9 8a2.7 2.7 0 1 1 0 5.4 2.7 2.7 0 0 1 0-5.4M16.4 15.4h4.4v2.1h.1c.6-1.2 2.1-2.5 4.4-2.5 4.7 0 5.5 3.1 5.5 7.1V31h-4.6v-7.6c0-1.8 0-4.1-2.5-4.1s-2.9 1.9-2.9 4V31h-4.6z"/></svg></a></li>
+        <li><a href="https://github.com/nidheesh23" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a></li>
+        <li><a href="https://codepen.io/" target="_blank" rel="noopener" aria-label="Portfolio">
+          <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="#2fbf71" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"><path d="M20 5 33 12.500v15L20 35 7 27.500v-15z"/><path d="M7 12.500 20 20l13-7.500M20 20v15"/><path d="M20 5v15" opacity=".0"/><path d="m13.500 16.300 6.500 3.700 6.500-3.700" opacity=".0"/></svg></a></li>
+        <li><a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="7" width="36" height="26" rx="8" fill="#ff1a1a"/><path fill="#fff" d="m16 14 10 6-10 6z"/></svg></a></li>
+      </ul>
+
+        
+    </section>
+
+    <!-- ============ HERO VISUAL ============ -->
+    <div class="visual">
+      <div class="ring-outer" aria-hidden="true"></div>
+      <div class="ring" aria-hidden="true"><i>isbdf</i></div>
+
+      <div class="desk" aria-hidden="true"><i></i></div>
+      <svg class="swell" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="swellG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6d6d73"/><stop offset=".35" stop-color="#46464c"/><stop offset="1" stop-color="#2a2a2f"/></linearGradient>
+          <linearGradient id="swellH" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+        </defs>
+        <path d="M0 200 C 90 150 230 70 390 42 C 520 20 700 36 820 78 C 900 104 960 120 1000 130 L 1000 200 Z" fill="url(#swellG)"/>
+        <path d="M120 150 C 250 80 400 40 520 36 C 650 32 780 60 900 108" fill="none" stroke="url(#swellH)" stroke-width="5"/>
+      </svg>
+
+      <img class="person" src="assets/photo.png" alt="Portrait of Nidheesh Kumar at his laptop" width="671" height="598" decoding="async">
+
+      <!-- mug -->
+      <div class="mug" aria-hidden="true">
+        <svg viewBox="0 0 150 112">
+          <defs>
+            <linearGradient id="mugG" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#18181b"/><stop offset=".3" stop-color="#2f2f34"/><stop offset=".62" stop-color="#1b1b1f"/><stop offset="1" stop-color="#0c0c0e"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="86" cy="106" rx="62" ry="7" fill="#000" opacity=".45"/>
+          <path d="M34 28c-28-6-32 40-6 52 5 2 10 2 14 0" fill="none" stroke="#0d0d10" stroke-width="9" stroke-linecap="round"/>
+          <path d="M34 28c-26-5-30 37-5 47" fill="none" stroke="#3a3a41" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M33 12h104l-4 88c-.4 7-6 11-14 11H52c-8 0-14-4-15-11z" fill="url(#mugG)"/>
+          <ellipse cx="85" cy="12" rx="52" ry="8" fill="#1e1e22" stroke="#b79a82" stroke-opacity=".7" stroke-width="1.6"/>
+          <ellipse cx="85" cy="12" rx="47" ry="6" fill="#060607"/>
+          <path d="M41 18l3 76" stroke="#55555d" stroke-width="2" opacity=".5" fill="none"/>
+        </svg>
+        <p><span>GOOD</span><span>CODE</span><span>BETTER</span><span>IDEAS</span></p>
+      </div>
+
+      <!-- code card -->
+      <div class="code" role="img" aria-label="Code snippet describing the developer">
+        <div class="code-bar">
+          <i class="dot r"></i><i class="dot y"></i><i class="dot g"></i>
+          <svg class="reload" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.500-5.800"/><path d="M20 4v5h-5"/></svg>
+        </div>
+<pre><span class="k">const</span> <span class="v">developer</span> <span class="p">= {</span>
+  <span class="n">name:</span> <span class="s">"Nidheesh Kumar"</span><span class="p">,</span>
+  <span class="n">role:</span> <span class="s">"Full Stack Developer"</span><span class="p">,</span>
+  <span class="n">skills:</span> <span class="p">[</span><span class="s">"React"</span><span class="p">,</span> <span class="s">"Node.js"</span><span class="p">,</span>
+    <span class="s">"JavaScript"</span><span class="p">,</span> <span class="s">"PostgreSQL"</span><span class="p">],</span>
+  <span class="n">passion:</span> <span class="s">"Building Web Apps"</span>
+<span class="p">};</span></pre>
+      </div>
+
+      <!-- handwritten note -->
+      <div class="note" aria-hidden="true">
+        <p>Turning<br>Ideas into<br>Web Experiences</p>
+        <svg viewBox="0 0 90 90" fill="none" stroke="#e8e8ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M52 6c22 18 14 46-26 70"/><path d="m36 70-12 6 4-14" /></svg>
+      </div>
+
+      <!-- tech stack 
+      <aside class="stack" aria-label="Tech stack">
+        <ul>
+          <li><svg viewBox="0 0 40 40" fill="none" stroke="#3fc8f0" stroke-width="2.400"><ellipse cx="20" cy="20" rx="17" ry="6.500"/><ellipse cx="20" cy="20" rx="17" ry="6.500" transform="rotate(60 20 20)"/><ellipse cx="20" cy="20" rx="17" ry="6.500" transform="rotate(120 20 20)"/><circle cx="20" cy="20" r="3" fill="#3fc8f0" stroke="none"/></svg><span>React</span></li>
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 35 11.500v17L20 37 5 28.500v-17z" fill="none" stroke="#5fa04e" stroke-width="2.800" stroke-linejoin="round"/><text x="20" y="25.500" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#5fa04e">JS</text></svg><span>Node.js</span></li>
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="4" fill="#f7df1e"/><text x="36" y="35" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="800" fill="#1a1a1a">JS</text></svg><span>JavaScript</span></li>
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M10 31c-2-8-3-15 0-20 2-3 6-5 11-5 6 0 11 3 11 10 0 6-3 10-6 12-1 1-3 1-3 3v3c-3 1-6-1-6-4-3 1-5 2-7 1z" fill="#336791"/><path d="M26 24c3 1 5 3 6 7-2-1-4-1-6-1z" fill="#5b8fb9"/><path d="M14 13c3 0 5 1 6 3" stroke="#fff" stroke-width="1.600" stroke-linecap="round" fill="none"/><circle cx="23.500" cy="14" r="1.800" fill="#fff"/><path d="M12 33c1 3 3 5 5 3" stroke="#8fb4d6" stroke-width="2" fill="none" stroke-linecap="round"/></svg><span>PostgreSQL</span></li>
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3c-7 0-8 3-8 6v4h8v2H9c-4 0-6 3-6 8 0 6 2 8 6 8h3v-5c0-3 3-5 6-5h8c3 0 5-2 5-5V9c0-3-4-6-11-6z" fill="#3b77ab"/><path d="M20 37c7 0 8-3 8-6v-4h-8v-2h11c4 0 6-3 6-8 0-6-2-8-6-8h-3v5c0 3-3 5-6 5h-8c-3 0-5 2-5 5v6c0 3 4 7 11 7z" fill="#ffd43b"/><circle cx="16" cy="8.500" r="1.600" fill="#fff"/><circle cx="24" cy="31.500" r="1.600" fill="#3b77ab"/></svg><span>Python</span></li>
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M21.500 2.800 37.200 18.500a2.700 2.700 0 0 1 0 3.800L21.500 38a2.700 2.700 0 0 1-3.800 0L2 22.300a2.700 2.700 0 0 1 0-3.800L17.700 2.800a2.700 2.700 0 0 1 3.800 0z" fill="#f05133"/><circle cx="14" cy="14" r="2.800" fill="#fff"/><circle cx="21" cy="21" r="2.800" fill="#fff"/><circle cx="21" cy="30" r="2.800" fill="#fff"/><path d="M14 14l7 7v9" stroke="#fff" stroke-width="2.400" fill="none"/></svg><span>Git</span></li>
+        </ul>
+      </aside>
+  -->
+      <!-- books 
+      <div class="books" aria-hidden="true">
+        <p><span>Clean Code</span></p>
+        <p><span>Web Development</span></p>
+        <p><span>System Design</span></p>
+        <p><span>Problem Solving</span></p>
+        <div class="books-reflect"><span>Problem Solving</span><span>System Design</span></div>
+      </div>
+        -->
+      
+<!-- REVIEW BADGE -->
+<div class="review-section">
+  <button class="review-badge" id="openReviews" type="button">
+    <div class="review-info">
+      <strong id="averageRating">0.0</strong>
+      <span id="reviewCount">0 Reviews</span>
+    </div>
+
+    <div class="review-avatars" id="reviewAvatars">
+      <span class="avatar">★</span>
+    </div>
+  </button>
+
+  <button class="write-review-btn" id="writeReview" type="button">
+    <span>★</span> Write a Review
+  </button>
+</div>
+
+<!-- REVIEW POPUP -->
+<div class="review-modal" id="reviewModal" aria-hidden="true">
+  <div class="review-modal-box" role="dialog"
+       aria-modal="true" aria-labelledby="reviewTitle">
+
+    <button class="review-close" id="closeReview"
+            type="button" aria-label="Close">×</button>
+
+    <h2 id="reviewTitle">Share Your Experience</h2>
+    <p id="reviewIntro">Your feedback means a lot to me!</p>
+    <div id="reviewComposer">
+
+    <div id="googleSignIn" class="google-sign-in"></div>
+    <div id="googleProfile" class="google-profile" hidden>
+      <div id="profileAvatar"></div>
+      <div class="profile-details"><strong id="profileName"></strong><small id="profileEmail"></small></div>
+      <button type="button" id="changeGoogleAccount">Change account</button>
+    </div>
+    <form id="reviewForm">
+      <label for="reviewerName">Your Name</label>
+      <input type="text" id="reviewerName"
+             maxlength="100" required readonly
+             autocomplete="name" placeholder="Name from your Google account">
+      <label for="reviewerEmail">Gmail / Google account email</label>
+      <input type="email" id="reviewerEmail" required readonly autocomplete="email"
+             placeholder="Email from your Google account" aria-describedby="reviewEmailHelp">
+      <p id="reviewEmailHelp">Your email stays private. Your name, photo, rating and review will be public. Signing in again lets you update your review.</p>
+
+      <label>Your Rating</label>
+      <div class="rating-stars" id="ratingStars"
+           aria-label="Select a rating">
+        <button type="button" data-rating="1" aria-label="1 star">★</button>
+        <button type="button" data-rating="2" aria-label="2 stars">★</button>
+        <button type="button" data-rating="3" aria-label="3 stars">★</button>
+        <button type="button" data-rating="4" aria-label="4 stars">★</button>
+        <button type="button" data-rating="5" aria-label="5 stars">★</button>
+      </div>
+
+      <label for="reviewMessage">Your Review</label>
+      <textarea id="reviewMessage" rows="4"
+                maxlength="1000" required
+                placeholder="Write your feedback..."></textarea>
+
+      <button type="submit" class="submit-review" disabled>
+        Submit Review
+      </button>
+      <p class="review-status" id="reviewStatus"
+         role="status"></p>
+    </form>
+
+    </div>
+    <p id="reviewHistoryStatus" role="status" hidden></p>
+    <div class="reviews-list" id="reviewsList" hidden></div>
+  </div>
+</div>
+
+
+      <!-- plant -->
+      <svg class="plant" viewBox="0 0 170 280" aria-hidden="true"
+     xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="leaf1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f7a52"/>
+      <stop offset="1" stop-color="#1f3a27"/>
+    </linearGradient>
+
+    <linearGradient id="leaf2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6a9a64"/>
+      <stop offset="1" stop-color="#27442f"/>
+    </linearGradient>
+
+    <linearGradient id="pot" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f4f2ee"/>
+      <stop offset="0.5" stop-color="#e5e1da"/>
+      <stop offset="1" stop-color="#cfcbc4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Original leaves -->
+  <path d="M80 190 C70 140 60 90 70 20
+           C92 70 100 130 90 190 Z"
+        fill="url(#leaf1)"/>
+
+  <path d="M86 190 C100 140 130 100 150 60
+           C156 110 122 150 94 190 Z"
+        fill="url(#leaf2)"/>
+
+  <path d="M74 190 C50 150 20 130 4 100
+           C40 104 70 140 80 190 Z"
+        fill="url(#leaf2)"/>
+
+  <path d="M92 190 C120 160 150 150 170 150
+           C150 180 120 190 98 196 Z"
+        fill="url(#leaf1)"/>
+
+  <path d="M70 190 C40 180 20 190 6 176
+           C30 160 60 170 80 190 Z"
+        fill="url(#leaf1)"/>
+
+  <!-- Leaf vein -->
+  <path d="M80 190 C76 140 76 90 78 24"
+        stroke="#b8d6b0"
+        stroke-opacity=".35"
+        stroke-width="1.5"
+        fill="none"/>
+
+  <!-- Pot back rim -->
+  <ellipse cx="85" cy="191" rx="55" ry="9"
+           fill="#bcb8b2"/>
+
+  <!-- Full pot body -->
+  <path d="
+    M30 193
+    L140 193
+    L130 253
+    Q128 265 116 265
+    L54 265
+    Q42 265 40 253
+    Z"
+    fill="url(#pot)"/>
+
+  <!-- Pot front upper rim -->
+  <path d="
+    M28 190
+    H142
+    L139 204
+    H31
+    Z"
+    fill="#e8e5df"/>
+
+  <!-- Pot rim highlight -->
+  <path d="M32 193 H138"
+        stroke="#ffffff"
+        stroke-opacity=".6"
+        stroke-width="2"/>
+
+  <!-- Pot side shadow -->
+  <path d="M133 207 L126 253 Q124 260 116 262"
+        stroke="#a9a49d"
+        stroke-opacity=".4"
+        stroke-width="3"
+        fill="none"/>
+
+  <!-- Pot bottom -->
+  <rect x="49" y="263" width="72" height="6"
+        rx="3" fill="#c5c0b9"/>
+</svg>
+    </div>
+
+    <!-- ============ SCROLL CUE ============ -->
+    <a class="scroll" href="#about" aria-label="Scroll down">
+      <svg class="mouse" viewBox="0 0 28 42" aria-hidden="true"><rect x="2" y="2" width="24" height="38" rx="12" fill="none" stroke="#f2f2f3" stroke-width="2.200"/><path class="wheel" d="M14 9v8" stroke="#f2f2f3" stroke-width="2.600" stroke-linecap="round"/></svg>
+      <span>Scroll Down</span>
+      <svg class="down" viewBox="0 0 24 14" aria-hidden="true"><path d="m3 3 9 8 9-8" fill="none" stroke="#f2f2f3" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- Sections the navigation links scroll to. Replace the placeholder text with your own content. -->
+<main class="sections">
+
+  <!-- ============ ABOUT SECTION ============ -->
+  <!-- ============ ABOUT SECTION ============ -->
+<section id="about" class="about-section" aria-labelledby="about-title">
+  <div class="about-container">
+
+    <!-- LEFT: text, buttons, stats -->
+    <div class="about-content">
+
+      <p class="about-label"><span>About Me</span><i aria-hidden="true"></i></p>
+
+      <h2 class="about-heading" id="about-title">
+        <span class="about-heading-line">More About</span>
+        <span class="about-heading-line about-heading-accent">Me</span>
+      </h2>
+
+      <h3 class="about-subheading">
+        Passionate about building<br>
+        ideas into <span>real-world solutions.</span>
+      </h3>
+
+      <p class="about-description">
+        I'm S. Nidheesh Kumar, a Full-Stack Developer who enjoys
+        creating modern, responsive, and user-friendly web applications.
+        I love turning creative ideas into functional solutions through
+        clean code, problem-solving, and continuous learning.
+      </p>
+
+      <div class="about-buttons">
+        <a href="#contact" class="about-btn about-btn-primary">
+          <svg class="ico ico-fill" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="4.2"/><path d="M4 21v-1.5a5.5 5.5 0 0 1 5.5-5.5h5a5.5 5.5 0 0 1 5.500 5.500V21z"/></svg>
+          <span>Let's Connect!</span>
+          <svg class="ico ico-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16"/><path d="m13 5 7 7-7 7"/></svg>
+        </a>
+
+        <a href="#projects" class="about-btn about-btn-outline">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10.500l7 2.500 2.500 7z"/></svg>
+          <span>View My Work</span>
+          <svg class="ico ico-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <ul class="about-stats">
+        <li class="about-stat">
+          <strong>10+</strong>
+          <span>Projects Completed</span>
+          <i aria-hidden="true"></i>
+        </li>
+        <li class="about-stat">
+          <strong>100%</strong>
+          <span>Learning Enthusiasm</span>
+          <i aria-hidden="true"></i>
+        </li>
+        <li class="about-stat">
+          <strong>Always</strong>
+          <span>Open to Opportunities</span>
+          <i aria-hidden="true"></i>
+        </li>
+      </ul>
+    </div>
+
+    <div class="about-prism" aria-label="Explore my values"><p class="prism-eyebrow">THE WAY I WORK</p><div class="prism-stage"><div class="values-prism"><article class="prism-face"><span class="prism-number">01 / PASSION</span><div class="prism-emblem prism-artwork art-0" aria-hidden="true"></div><h3>Passion</h3><p>Always eager to learn and explore new technologies.</p></article><article class="prism-face"><span class="prism-number">02 / QUALITY</span><div class="prism-emblem prism-artwork art-1" aria-hidden="true"></div><h3>Quality</h3><p>Focused on writing clean, efficient and maintainable code.</p></article><article class="prism-face"><span class="prism-number">03 / TEAMWORK</span><div class="prism-emblem prism-artwork art-2" aria-hidden="true"></div><h3>Teamwork</h3><p>I value collaboration and open communication.</p></article><article class="prism-face"><span class="prism-number">04 / PROBLEM SOLVING</span><div class="prism-emblem prism-artwork art-3" aria-hidden="true"></div><h3>Problem Solving</h3><p>Turning challenges into opportunities to grow.</p></article></div></div><div class="prism-controls"><button class="prism-arrow" type="button" data-direction="prev" aria-label="Previous value">&#8249;</button><span class="prism-count">01 / 04</span><button class="prism-arrow" type="button" data-direction="next" aria-label="Next value">&#8250;</button></div><button class="prism-play" type="button" aria-pressed="false">Pause rotation</button><div class="prism-tabs"><button class="prism-tab" type="button" aria-pressed="false">Passion</button><button class="prism-tab" type="button" aria-pressed="false">Quality</button><button class="prism-tab" type="button" aria-pressed="false">Teamwork</button><button class="prism-tab" type="button" aria-pressed="false">Problem Solving</button></div><p class="prism-hint">Drag or swipe to explore</p><span class="prism-status" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)"></span></div>
+  </div>
+</section>
+
+  <!-- ============ SKILLS SECTION ============ -->
+  <section id="skills" class="skills-rows" aria-labelledby="skills-title"><p class="sr-label">SKILLS</p><h2 class="sr-title" id="skills-title">The Tools Behind <span>My Work</span></h2><p class="sr-sub">Explore my toolkit and the knowledge behind each technology.</p><div class="sr-row" data-category="Frontend"><div class="sr-category"><span class="sr-number" aria-hidden="true">01</span><div class="sr-category-copy"><h3>Frontend</h3><p>Interfaces & interaction</p></div></div><div class="sr-technologies"><button class="sr-skill bx-react" type="button" data-skill="React" data-knowledge="[&quot;Components &amp; JSX&quot;, &quot;Hooks &amp; state&quot;, &quot;Routing&quot;, &quot;API integration&quot;]" aria-expanded="true" aria-controls="sr-detail-1"><i class="bx bxl-react" aria-hidden="true"></i><span>React</span></button><button class="sr-skill bx-javascript" type="button" data-skill="JavaScript" data-knowledge="[&quot;ES6+ features&quot;, &quot;Promises &amp; async/await&quot;, &quot;DOM &amp; events&quot;, &quot;Modules &amp; tooling&quot;]" aria-expanded="false" aria-controls="sr-detail-1"><i class="bx bxl-javascript" aria-hidden="true"></i><span>JavaScript</span></button></div><button class="sr-expand" type="button" aria-expanded="true" aria-controls="sr-detail-1" aria-label="Collapse Frontend knowledge"><i class="bx bx-chevron-down" aria-hidden="true"></i></button><div class="sr-detail" id="sr-detail-1" role="region" aria-labelledby="sr-detail-heading-1" ><h4 id="sr-detail-heading-1">REACT / CORE KNOWLEDGE</h4><ul><li>Components &amp; JSX</li><li>Hooks &amp; state</li><li>Routing</li><li>API integration</li></ul></div></div><div class="sr-row" data-category="Backend"><div class="sr-category"><span class="sr-number" aria-hidden="true">02</span><div class="sr-category-copy"><h3>Backend</h3><p>Logic & services</p></div></div><div class="sr-technologies"><button class="sr-skill bx-nodejs" type="button" data-skill="Node.js" data-knowledge="[&quot;Express &amp; REST APIs&quot;, &quot;Middleware&quot;, &quot;Authentication&quot;, &quot;Async &amp; event loop&quot;]" aria-expanded="false" aria-controls="sr-detail-2"><i class="bx bxl-nodejs" aria-hidden="true"></i><span>Node.js</span></button><button class="sr-skill bx-python" type="button" data-skill="Python" data-knowledge="[&quot;Scripting &amp; automation&quot;, &quot;Data structures&quot;, &quot;File &amp; data handling&quot;, &quot;Problem solving&quot;]" aria-expanded="false" aria-controls="sr-detail-2"><i class="bx bxl-python" aria-hidden="true"></i><span>Python</span></button></div><button class="sr-expand" type="button" aria-expanded="false" aria-controls="sr-detail-2" aria-label="Expand Backend knowledge"><i class="bx bx-chevron-down" aria-hidden="true"></i></button><div class="sr-detail" id="sr-detail-2" role="region" aria-labelledby="sr-detail-heading-2" hidden><h4 id="sr-detail-heading-2">NODE.JS / CORE KNOWLEDGE</h4><ul><li>Express &amp; REST APIs</li><li>Middleware</li><li>Authentication</li><li>Async &amp; event loop</li></ul></div></div><div class="sr-row" data-category="Database"><div class="sr-category"><span class="sr-number" aria-hidden="true">03</span><div class="sr-category-copy"><h3>Database</h3><p>Data & relationships</p></div></div><div class="sr-technologies"><button class="sr-skill bx-postgresql" type="button" data-skill="PostgreSQL" data-knowledge="[&quot;SQL queries&quot;, &quot;Joins &amp; relations&quot;, &quot;Schema design&quot;, &quot;Indexes &amp; transactions&quot;]" aria-expanded="false" aria-controls="sr-detail-3"><i class="bx bxl-postgresql" aria-hidden="true"></i><span>PostgreSQL</span></button></div><button class="sr-expand" type="button" aria-expanded="false" aria-controls="sr-detail-3" aria-label="Expand Database knowledge"><i class="bx bx-chevron-down" aria-hidden="true"></i></button><div class="sr-detail" id="sr-detail-3" role="region" aria-labelledby="sr-detail-heading-3" hidden><h4 id="sr-detail-heading-3">POSTGRESQL / CORE KNOWLEDGE</h4><ul><li>SQL queries</li><li>Joins &amp; relations</li><li>Schema design</li><li>Indexes &amp; transactions</li></ul></div></div><div class="sr-row" data-category="Tools"><div class="sr-category"><span class="sr-number" aria-hidden="true">04</span><div class="sr-category-copy"><h3>Tools</h3><p>Workflow & collaboration</p></div></div><div class="sr-technologies"><button class="sr-skill bx-git" type="button" data-skill="Git" data-knowledge="[&quot;Branching &amp; merging&quot;, &quot;Commits &amp; history&quot;, &quot;GitHub workflow&quot;, &quot;Pull requests&quot;]" aria-expanded="false" aria-controls="sr-detail-4"><i class="bx bxl-git" aria-hidden="true"></i><span>Git</span></button></div><button class="sr-expand" type="button" aria-expanded="false" aria-controls="sr-detail-4" aria-label="Expand Tools knowledge"><i class="bx bx-chevron-down" aria-hidden="true"></i></button><div class="sr-detail" id="sr-detail-4" role="region" aria-labelledby="sr-detail-heading-4" hidden><h4 id="sr-detail-heading-4">GIT / CORE KNOWLEDGE</h4><ul><li>Branching &amp; merging</li><li>Commits &amp; history</li><li>GitHub workflow</li><li>Pull requests</li></ul></div></div><noscript><p>Enable JavaScript to expand the other technologies.</p></noscript></section>
+  <section id="projects" class="projects-section" aria-labelledby="projectsTitle">
+<p class="projects-label">PROJECTS</p><h2 class="projects-title" id="projectsTitle">Selected <span>Projects</span></h2>
+<p class="projects-sub">Hover over a project for 5 seconds to preview. On a phone, tap to explore.</p><div class="projects-grid" id="projectsGrid"></div>
+<noscript><p>   View <a href="https://nidheesh23.github.io/Smashpro/">Smashpro</a>. Enable JavaScript for browser previews.</p></noscript>
+</section>
+  
+  <section id="experience" class="experience-section" aria-labelledby="experienceTitle">
+    <p class="experience-label">EXPERIENCE</p>
+    <h2 class="experience-title" id="experienceTitle">My Professional <span>Journey</span></h2>
+    <p class="experience-sub">Every milestone shapes the developer I am today.</p>
+    <div class="journey">
+      <svg class="journey-path" viewBox="0 0 140 880" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M70 0 C105 35 105 75 70 110 S35 285 70 330 S105 505 70 550 S35 725 70 770 S105 850 70 880"/></svg>
+        <ol class="journey-list">
+          <li class="journey-item">
+            <div class="journey-content">
+              <a href="https://shanthiitsolution.com/" target="_blank" rel="noopener noreferrer">
+                <img class="journey-logo" src="/assets/logos/sit.png" alt="Company logo placeholder" width="80" height="80" loading="lazy">
+              </a>
+              <div class="journey-copy">
+                <p class="journey-date">2026 – PRESENT</p>
+                <h3>Full Stack Developer Intern</h3>
+                <p class="journey-company">Shanthi IT Solution - SIT</p>
+                <p class="journey-description">Developed responsive full-stack websites, integrated databases, and strengthened problem-solving skills through real-world projects.</p>
+              </div>
+            </div><span class="journey-pin" aria-hidden="true">01</span>
+          </li>
+          <li class="journey-item">
+            <div class="journey-content">
+              <a href="https://www.mobiusservices.com/" target="_blank" rel="noopener noreferrer">
+                <img class="journey-logo" src="assets/logos/images.png" alt="Company logo placeholder" width="80" height="80" loading="lazy">
+              </a>
+              <div class="journey-copy">
+                <p class="journey-date">2024 – 2026</p>
+                <h3>Senior Data Process Associate</h3>
+                <p class="journey-company">Mobius Knowledge Services</p>
+                <p class="journey-description">Configured and optimized data workflows and SQL operations, collaborating with technical teams to improve data accuracy, operational efficiency, and application delivery.</p>
+              </div>
+            </div><span class="journey-pin" aria-hidden="true">02</span>
+          </li>
+          <li class="journey-item">
+            <div class="journey-content">
+              <a href="https://www.kalasalingam.ac.in/" target="_blank" rel="noopener noreferrer">
+                <img class="journey-logo" src="/assets/logos/Kalasalingam.png" alt="Org logo placeholder" width="80" height="80" loading="lazy">
+              </a>
+              <div class="journey-copy">
+                <p class="journey-date">2024 – 2026</p>
+                <h3>Master of Science (M.Sc.) in Data Science</h3>
+                <p class="journey-company">Kalasalingam Academy of Research and Education</p>
+                <p class="journey-description">Gained skills in programming, data analytics, databases, and machine learning.</p>
+              </div>
+            </div><span class="journey-pin" aria-hidden="true">03</span>
+          </li>
+          <li class="journey-item">
+            <div class="journey-content">
+              <a href="https://www.karunya.edu/" target="_blank" rel="noopener noreferrer">
+                <img class="journey-logo" src="assets/logos/Karunya.png" alt="School logo placeholder" width="80" height="80" loading="lazy">
+              </a>
+              <div class="journey-copy">
+                <p class="journey-date">2020 – 2023</p>
+                <h3>B.Sc. in Data Science & Analytics</h3>
+                <p class="journey-company">Karunya Institute of Technology and Sciences</p>
+                <p class="journey-description">Built a strong academic foundation in computing, logical thinking, and technical innovation.</p>
+              </div>
+            </div><span class="journey-pin" aria-hidden="true">04</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+  <section id="contact" class="contact-section" aria-labelledby="contactTitle">
+    <div class="contact-layout">
+      <div>
+        <p class="contact-label">CONTACT</p>
+        <h2 class="contact-heading" id="contactTitle">
+          <span>Have an idea?</span>
+          <span class="contact-accent">Let’s build it</span>
+          <span>together.</span>
+        </h2>
+        <p class="contact-intro">Open to opportunities, collaborations, and interesting conversations.</p>
+        <div class="contact-links">
+          <a class="contact-link" id="contactEmail" aria-disabled="true"><i class="bx bx-envelope" aria-hidden="true"></i><span>
+            <strong>Email</strong>
+            <small>s.nidheesh2002@gmail.com</small>
+          </span><i class="bx bx-up-arrow-alt contact-link-arrow" aria-hidden="true"></i>
+        </a>
+
+          <a class="contact-link" id="contactLinkedIn" aria-disabled="true" target="_blank" rel="noopener noreferrer">
+            <i class="bx bxl-linkedin-square" aria-hidden="true"></i>
+            <span>
+              <strong>LinkedIn</strong>
+              <small>https://www.linkedin.com/in/s-nidheesh-kumar</small>
+            </span>
+            <i class="bx bx-up-arrow-alt contact-link-arrow" aria-hidden="true"></i>
+          </a>
+          <a class="contact-link" id="contactGitHub" aria-disabled="true" target="_blank" rel="noopener noreferrer">
+            <i class="bx bxl-github" aria-hidden="true"></i>
+            <span>
+              <strong>GitHub</strong>
+              <small>https://github.com/nidheesh23</small>
+            </span>
+            <i class="bx bx-up-arrow-alt contact-link-arrow" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+<form id="contactForm" class="contact-form"><h3>Send a message</h3><div class="contact-field"><label for="contactName">Your name</label><input id="contactName" name="name" autocomplete="name" placeholder="Enter your name" required maxlength="120"></div><div class="contact-field"><label for="contactReplyEmail">Email address</label><input id="contactReplyEmail" type="email" name="email" autocomplete="email" placeholder="you@example.com" required maxlength="200"></div><div class="contact-field"><label for="contactMessage">Your message</label><textarea id="contactMessage" name="message" placeholder="Tell me about your project…" required maxlength="3000"></textarea></div><button class="contact-send" type="submit"><i class="bx bx-paper-plane" aria-hidden="true"></i>Send Message</button><p class="contact-status" id="contactStatus" role="status">Prepares a message in your email app once a contact email is configured.</p></form></div>
+
+
+
+<footer class="contact-footer">
+  
+  <a href="#top"><span class="contact-signature">Nidheesh Kumar</span></a><div class="view-counter" id="viewCounter" aria-label="Portfolio visitors"><i class="bx bx-show" aria-hidden="true"></i><span class="view-number" id="viewNumber">—</span><span class="view-caption"><span>PORTFOLIO</span><span>VIEWS</span></span><span class="view-increment" aria-hidden="true">+1</span></div></footer><span id="viewerAnnouncement" role="status" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)"></span></section>
+</main>
+
+
+
+<!-- Original Version 1 interactive velvet preloader. -->
+<div id="preloader" aria-label="Interactive velvet curtain. Move pointer to touch, double click to reveal portfolio.">
+    <canvas id="fabric" aria-hidden="true"></canvas>
+    <div class="cloth-grain" aria-hidden="true"></div>
+    <div class="cloth-vignette" aria-hidden="true"></div>
+    <div class="preloader-ui">
+      <div class="preloader-intro">
+        <div class="preloader-greeting" id="preloaderGreeting" lang="en" aria-hidden="true">Hello, I am</div>
+        <span class="preloader-sr">Hello, I am S.Nidheesh Kumar.</span>
+        <h1 class="preloader-title" aria-hidden="true"><span>S.Nidheesh</span> <span class="preloader-highlight">Kumar<svg viewBox="0 0 300 24" preserveAspectRatio="none"><path d="M6 15 Q80 5 151 12 T294 10"/></svg></span></h1>
+      </div>
+      <div class="interaction-hint"><span class="pulse-dot"></span><span>MOVE TO FEEL THE FABRIC</span><span class="separator">/</span><span>DOUBLE CLICK TO REVEAL</span></div>
+    </div>
+    <button id="revealButton" type="button" aria-label="Reveal portfolio">ENTER PORTFOLIO <span>↗</span></button>
+  </div>
+
+
+<dialog id="projectPreview" class="project-preview" aria-labelledby="previewTitle">
+<h2 id="previewTitle" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)">Project preview</h2>
+<div class="preview-toolbar"><span class="preview-dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="preview-address"><i class="bx bx-globe" aria-hidden="true"></i><span id="previewAddress"></span></div><button type="button" id="previewClose" class="preview-close" aria-label="Close project preview">×</button></div>
+<div class="preview-body"><iframe id="projectFrame" title="Project live website" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox" hidden></iframe><div class="preview-placeholder" id="previewPlaceholder"><i class="bx bx-code-alt" aria-hidden="true"></i><h3 id="previewDemoName">Demo project</h3><p>Your next project will appear here. Add its live URL in the projects list in script.js.</p><code>url: 'https://your-project-url.com'</code></div></div>
+<div class="preview-footer"><span>If a site blocks previews, use Open website.</span><a id="previewOpen" class="preview-open" target="_blank" rel="noopener noreferrer">Open website <i class="bx bx-link-external" aria-hidden="true"></i></a></div>
+</dialog>
+<svg class="visit-cord" id="visitCord" aria-hidden="true" hidden><path/><circle r="3"/></svg><div class="visit-tag" id="visitTag" role="slider" tabindex="0" aria-label="Hanging visit tag. Drag to move. Use arrow keys to scroll, Home for About, End for Contact." aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-orientation="vertical" hidden><i class="bx bx-show" aria-hidden="true"></i><span class="visit-tag-text" aria-hidden="true">YOUR<br>VISIT</span><span class="visit-progress" aria-hidden="true">0%</span></div>
+<script src="config.js" defer></script>
+<script src="script.js" defer></script>
+<script src="visits.js" defer></script>
+<script src="reviews.js" defer></script>
+</body>
+</html>
+

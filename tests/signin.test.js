@@ -1,0 +1,11 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');const vm=require('node:vm');const fs=require('node:fs');
+const source=fs.readFileSync('reviews.js','utf8');
+function setup(request){const fields={};const byId=id=>fields[id]??={value:'',textContent:'',hidden:false,replaceChildren(){}};const submit={disabled:true},status={textContent:''};
+ const code=source.slice(source.indexOf('    function fillIdentity'),source.indexOf('    script.onload='));
+ const context={byId,submit,status,request,avatar:p=>p,Uint8Array,TextDecoder,atob,Error};vm.createContext(context);
+ vm.runInContext(`let credential='',profile=null,signInAttempt=0;function resetProfile(){signInAttempt++;credential='';profile=null;submit.disabled=true;byId('reviewerName').value='';byId('reviewerEmail').value='';} ${code};this.handle=handleGoogleCredential;this.auth=()=>({credential,profile});`,context);
+ return {context,fields,submit,status};}
+const token='header.'+Buffer.from(JSON.stringify({name:'நிதீஷ் Kumar',email:'person@gmail.com'})).toString('base64url')+'.signature';
+test('fills Unicode name and email immediately; enables submission only after verification',async()=>{let resolve;const s=setup(()=>new Promise(r=>resolve=r));const pending=s.context.handle({credential:token});assert.equal(s.fields.reviewerName.value,'நிதீஷ் Kumar');assert.equal(s.fields.reviewerEmail.value,'person@gmail.com');assert.equal(s.submit.disabled,true);assert.equal(s.context.auth().profile,null);resolve({profile:{name:'Verified Name',email:'person@gmail.com'}});await pending;assert.equal(s.fields.reviewerName.value,'Verified Name');assert.equal(s.submit.disabled,false);});
+test('failed verification keeps submission disabled and explains failure',async()=>{const s=setup(async()=>{throw Error('Please sign in with Google again.');});await s.context.handle({credential:token});assert.equal(s.fields.reviewerEmail.value,'person@gmail.com');assert.equal(s.submit.disabled,true);assert.equal(s.context.auth().profile,null);assert.match(s.status.textContent,/verification failed/);});
+test('missing credential gives a visible error',async()=>{const s=setup(async()=>{throw Error('unexpected request');});await s.context.handle({});assert.equal(s.submit.disabled,true);assert.match(s.status.textContent,/did not return/);});
