@@ -1,105 +1,86 @@
-# GitHub Pages hosting steps
+# Free setup: GitHub Pages + Cloudflare Workers + D1
 
-This package uses GitHub Pages for the webpage and a Render Node service for Google reviews and visitor counts. The page design is preserved. Render's persistent-disk option requires a paid service; free Render local SQLite storage does not survive restarts/redeployments.
+This replaces Render. Stay on Cloudflare's Free plan; no paid disk or purchased domain is needed. Free usage limits apply. The frontend design stays the same. The old server.js is retained only for local development, not deployed to Cloudflare. Follow this guide instead of HOSTING-STEPS.md and the Render instructions.
 
-## 1. Upload the project to GitHub
+## 1. Create your account and database
 
-Create a public repository called `portfolio`, with default branch `main`. Upload the CONTENTS of the `Nid-Portfolio` folder to the repository root. `index.html`, `package.json`, and the hidden `.github` folder must be directly at the root, not inside another folder.
+Sign up at https://dash.cloudflare.com/sign-up and verify your email. You do not need to add/buy a domain for this setup.
 
-Use Git or GitHub Desktop to include `.github/workflows/pages.yml`. Do not commit `.env`, `data/`, or `node_modules/`. These are ignored and omitted from this deployment ZIP. The workflow publishes only public files and assets.
+In the dashboard, open Storage & databases > D1 SQL Database (or search for D1). Choose Create database and name it `nid-portfolio-db`.
 
-## 2. Enable GitHub Pages
+Open the database's Console. Open the included `cloudflare/schema.sql` file, copy its complete contents into the console and run it. This creates the reviews and visitors tables without deleting data.
 
-Repository Settings > Pages > Build and deployment > Source: GitHub Actions.
+## 2. Create the Worker
 
-In Actions, run `Deploy portfolio to GitHub Pages` if needed. After it finishes, copy the URL GitHub reports, normally `https://YOUR_USERNAME.github.io/portfolio/`. Your page will display, but reviews/counts require the backend below.
+Open Workers & Pages > Create application > Start with Hello World. Name it `nid-portfolio-api` and deploy the starter. Open Edit code.
 
-## 3. Create the Render backend
+Replace the entire starter code with the complete contents of `cloudflare/worker.mjs`. Save/deploy the Worker. The module is self-contained and does not need npm packages or a build command.
 
-At https://render.com choose New > Web Service and connect the same repository and `main` branch.
+## 3. Connect the database
 
-| Setting | Value |
+Open the Worker's Bindings tab > Add binding > D1 database. Set Variable name to exactly `DB` (uppercase), select `nid-portfolio-db`, then save/deploy if prompted.
+
+## 4. Add environment variables
+
+In Worker Settings > Variables and Secrets, add these Text variables:
+
+| Variable | Value |
 | --- | --- |
-| Runtime | Node |
-| Root directory | Empty, when package.json is at repository root |
-| Build command | `npm ci` |
-| Start command | `npm start` |
-| Instance | Paid instance supporting persistent disks |
-| Health check | `/api/health` |
-| Node version | Included `.node-version` selects Node 24 |
+| GOOGLE_CLIENT_ID | Your Google OAuth Web application client ID, ending in .apps.googleusercontent.com |
+| ALLOWED_ORIGINS | https://YOUR_USERNAME.github.io |
 
-Add a persistent disk, mount path `/var/data`. Only files inside that path persist. Set these Render environment variables:
+Use the GitHub Pages origin only, with no repository path and no trailing slash. If you also test locally, append `,http://localhost:3000`. Add a custom domain origin similarly if needed. Save and deploy. A Google client secret is not required.
 
-```text
-GOOGLE_CLIENT_ID=YOUR_GOOGLE_WEB_CLIENT_ID.apps.googleusercontent.com
-ALLOWED_ORIGINS=https://YOUR_USERNAME.github.io
-DATA_PATH=/var/data/reviews.sqlite
-```
+## 5. Test the Worker
 
-Use the origin only in ALLOWED_ORIGINS: no `/portfolio/` and no trailing slash. Multiple origins, such as a custom domain, can be comma-separated. Render supplies PORT automatically. Deploy, then copy the actual service URL, for example `https://YOUR-SERVICE.onrender.com`.
+Copy its public workers.dev URL from the dashboard, for example `https://nid-portfolio-api.YOUR-SUBDOMAIN.workers.dev`.
 
-Open that URL with `/api/health` appended: it should return `{"ok":true}`. `/api/config` should return your public Google client ID.
+Open these URLs directly in a browser:
 
-## 4. Connect GitHub Pages to the API
+- `/api/health` should return `{"ok":true}`.
+- `/api/config` should show your Google client ID.
+- `/api/reviews` should return `{"reviews":[]}` on a new database.
+- `/api/visits` should return `{"total":0}` on a new database.
+
+If reviews/visits fail, check the uppercase DB binding and that schema.sql was run. Health alone does not test the database.
+
+## 6. Connect your GitHub website
+
+Replace/update your GitHub repository using the contents of the included portfolio folder. Keep files at the repository root and include `.github/workflows/pages.yml`. Never upload .env or local data/. The workflow uploads only public HTML/CSS/JS and assets, not the backend, credentials or database.
 
 Edit `config.js`:
 
 ```js
-window.PORTFOLIO_CONFIG = { apiBase: 'https://YOUR-SERVICE.onrender.com' };
+window.PORTFOLIO_CONFIG = {
+  apiBase: 'https://nid-portfolio-api.YOUR-SUBDOMAIN.workers.dev'
+};
 ```
 
-Do not append `/api`. Commit and push; the Pages workflow republishes the site. The webpage will now call Render instead of looking for API routes on GitHub Pages.
+Paste your ACTUAL Worker URL, without `/api`. Commit/push. In repository Settings > Pages, select GitHub Actions as the publishing source. Wait for the Deploy portfolio to GitHub Pages workflow to finish. Hard-refresh the live page.
 
-## 5. Configure Google sign-in
+## 7. Enable Google login for the live site
 
-In Google Cloud Console > Google Auth Platform > Clients, select/create a Web application OAuth client. Put its client ID into Render's GOOGLE_CLIENT_ID variable.
+In Google Cloud Console > Google Auth Platform > Clients, open your Web application OAuth client. Add `https://YOUR_USERNAME.github.io` under Authorized JavaScript origins. Use the same client ID in your Worker. Add your custom domain too if you use one. The repository path is not part of an origin. The workers.dev API origin is not needed for Google login when the login button is on GitHub Pages.
 
-Add these Authorized JavaScript origins:
+Configure Branding and Audience. If your Google consent app is in Testing, add the Google accounts allowed to test. Configure its intended audience/publishing status before public launch. This implementation uses a popup credential callback; it does not need an OAuth redirect URL or client secret.
 
-```text
-https://YOUR_USERNAME.github.io
-http://localhost:3000
-```
+## 8. Verify reviews and visits
 
-Add your custom domain origin too if used. No repository path goes into an origin. This integration uses the Google Identity Services popup callback, so it does not need an OAuth redirect route or client secret. Configure Branding and Audience. While the consent app is in Testing, add your test Google accounts; configure the intended public audience/publishing status before launch.
+Sign in through Write a Review. Name/email should fill; submission enables only after verification. Submit a review, then open Ratings and check it from another browser. An account can update its own review; public review responses omit email addresses. These are reviews on your portfolio, not Google Maps/Google Business reviews.
 
-## 6. Test the live page
+The footer records unique browser IDs, shared in D1. Refreshing the same browser does not increase it. Another browser/device or cleared browser storage can count again. A page load counts even without scrolling to the footer. Storage-disabled browsers display the total without registering another visitor. Counts refresh on load/reconnection; the scroll animation does not add visitors. This is an approximate count, not bot-proof analytics. The total starts at zero with a fresh database, not the previous decorative 150.
 
-1. Open the GitHub Pages URL and hard-refresh.
-2. Write a Review should open the form. Sign in; name/email should fill and submission should enable after server verification.
-3. Submit a review. Ratings should show it; another browser should also see it. The same Google account updates its existing review. Public reviews do not include email addresses.
-4. Check the footer count. Refreshing the same browser should not add a visitor; another browser/device should add one.
-5. Redeploy the backend. Reviews and counts should remain. If they reset, check DATA_PATH and the persistent disk.
+Cloudflare persists D1 data separately from Worker deployments. Use D1's backup/export features for backups. Do not delete the database when updating Worker code. Local SQLite reviews are not migrated automatically; keep the original data file private and backed up. It contains reviewer emails.
 
-## What the counter measures
+## Limits and remaining behavior
 
-The counter starts at zero with a new database. The old 150/151 was decorative. A visit is recorded on page load, even before the visitor scrolls to the footer. A random ID in browser local storage prevents refreshes from adding visitors. The database stores the ID, not an email or IP address, for this counter.
+Workers and D1 Free plans have request, database-operation and storage limits. API calls may fail when those limits are reached; the page will still load through GitHub Pages. Keep the account on the Free plan if you want to avoid paid-plan charges. No promise of unlimited traffic or permanent free terms is made.
 
-This measures approximate unique browsers, not exact people. Different devices, cleared storage, private browsing, bots, or fabricated requests can add counts. If local storage is unavailable, the total is shown without adding a visitor. The animation no longer modifies the total. The displayed total refreshes on page load or reconnection, not continuously while a page remains open.
+The original contact form still opens an email application. External project sites may block iframe previews; their Open website link remains available.
 
-## Existing reviews and local development
+## References
 
-The new Render disk starts empty. The deployment ZIP deliberately excludes local `.env` and `data/` files. Keep your original local database backed up. To migrate it, stop the local server, back up `data/reviews.sqlite`, and securely transfer it to `/var/data/reviews.sqlite` while the backend is stopped. Do not upload that database to GitHub: it contains private reviewer emails. Use one backend instance and regular SQLite database backups.
-
-For local development, copy `.env.example` to `.env`, set GOOGLE_CLIENT_ID, and leave DATA_PATH unset. Temporarily set config.js apiBase to an empty string, run `npm ci`, then `npm start`, and open `http://localhost:3000`. Restore the Render URL before pushing the production configuration. Run `npm test` for the automated checks.
-
-## Troubleshooting
-
-- API returns HTML/reviews unavailable: config.js must point to the Render service, not the GitHub page URL.
-- Origin rejected: ALLOWED_ORIGINS must match the page protocol and host exactly, with no path or trailing slash.
-- Google origin/client error: check Authorized JavaScript origins and that the same web client ID is used in Render.
-- Fields fill but submission remains disabled: read the message below Submit Review, then inspect Render logs, client ID, and network access to Google's verification service.
-- Counter shows a dash: check `/api/health`, config.js, and the browser Network panel's `/api/visits` request.
-- Data resets: check the paid persistent disk mount and DATA_PATH.
-- Workflow missing: ensure `.github/workflows/pages.yml` is committed and Pages Source is GitHub Actions.
-- External previews: a third-party site may block iframe embedding; use Open website in that case.
-- The contact form retains the original behavior of opening an email application; it does not send email from the server.
-
-## Official references
-
-- https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages
-- https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
-- https://render.com/docs/deploy-node-express-app
-- https://render.com/docs/disks
-- https://render.com/docs/free
+- https://developers.cloudflare.com/d1/get-started/
+- https://developers.cloudflare.com/d1/platform/pricing/
+- https://developers.cloudflare.com/workers/platform/limits/
 - https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid
